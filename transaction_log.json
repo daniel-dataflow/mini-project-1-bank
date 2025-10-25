@@ -1,0 +1,29 @@
+[
+  {
+    "timestamp": "2025-10-02T00:13:25.957239",
+    "sender_name": "안호용",
+    "sender_account": "943202-00-912073",
+    "recipient_name": "asdf",
+    "recipient_account": "123",
+    "amount": 30,
+    "status": "completed"
+  },
+  {
+    "type": "Account transfer",
+    "sender_name": "안호용",
+    "sender_account": "943202-00-912073",
+    "recipient_name": "asdf",
+    "recipient_account": "123",
+    "amount": 150,
+    "timestamp": "2025-10-02 00:56:21"
+  },
+  {
+    "type": "Account transfer",
+    "sender_name": "안호용",
+    "sender_account": "943202-00-912073",
+    "recipient_name": "asdf",
+    "recipient_account": "123",
+    "amount": 50,
+    "timestamp": "2025-10-02 01:12:10"
+  }
+]
