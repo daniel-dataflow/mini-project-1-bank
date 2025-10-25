@@ -1,11 +1,10 @@
-# 새 UI: 서비스 계층만 호출하는 간단한 콘솔 인터페이스
-from bank_function.bank_storage import BankStorage
-from bank_function.services import BankService
+# ui_console.py - 콘솔 UI
+from bank_core.storage import BankStorage
+from bank_core.service import BankService
 
 def main():
     storage = BankStorage("bank.json")
     service = BankService(storage)
-
     while True:
         print("\n===== 세종은행 메인 메뉴 =====")
         print("1. 회원가입")
@@ -29,7 +28,7 @@ def main():
             print("프로그램을 종료합니다.")
             break
         else:
-            print("잘못된 입력입니다.")
+            print("잘못된 입력입니다. 다시 입력하세요.")
 
 def user_menu(service):
     while True:
@@ -49,24 +48,33 @@ def user_menu(service):
             print(msg)
         elif choice == "3":
             acc_num = input("입금할 계좌번호: ").strip()
-            amt = int(input("입금액: "))
+            try:
+                amt = int(input("입금액: "))
+            except ValueError:
+                print("입금액은 숫자로 입력하세요.")
+                continue
             ok, msg = service.deposit(acc_num, amt)
             print(msg)
         elif choice == "4":
             acc_num = input("출금할 계좌번호: ").strip()
-            amt = int(input("출금액: "))
+            try:
+                amt = int(input("출금액: "))
+            except ValueError:
+                print("출금액은 숫자로 입력하세요.")
+                continue
             ok, msg = service.withdraw(acc_num, amt)
             print(msg)
         elif choice == "5":
-            # 첨부파일의 상세 이체 프로세스 호출
             ok, msg = service.transfer()
             print(msg)
         elif choice == "6":
+            print("로그아웃 되었습니다. 현재 계좌 상태:")
+            for acc in service.current_user.accounts:
+                print(acc)
             service.logout()
-            print("로그아웃 되었습니다.")
             break
         else:
-            print("잘못된 입력입니다.")
+            print("잘못된 입력입니다. 다시 입력하세요.")
 
 if __name__ == "__main__":
     main()
