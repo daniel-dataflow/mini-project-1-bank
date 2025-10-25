@@ -1,4 +1,3 @@
-# main.py
 
 from bank_transfer_services import BankService
 from bank_storage import BankStorage
